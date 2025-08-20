@@ -94,3 +94,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+button:active {
+    background:red;
+    background-color: #0056b3; /* Darker blue */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* Inset shadow */
+    transform: translateY(1px); /* Slight downward shift */
+}

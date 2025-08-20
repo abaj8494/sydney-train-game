@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/sydney-train-game/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
-    <script type="module" crossorigin src="/sydney-train-game/assets/index-BRzzDAQC.js"></script>
+    <script type="module" crossorigin src="/sydney-train-game/assets/index-CorQaURc.js"></script>
   </head>
   <body>
     <div id="app"></div>
@@ -21,6 +21,20 @@
       <input type="checkbox" id="all" checked /> show all solutions
     </label>
   </form>
+  <div id="ops" style="margin:0.5rem 0;">
+    <strong>Operations:</strong>
+    <button type="button" class="op on" data-op="+">+</button>
+    <button type="button" class="op on" data-op="-">-</button>
+    <button type="button" class="op on" data-op="*">*</button>
+    <button type="button" class="op on" data-op="/">/</button>
+    <button type="button" class="op" data-op="^">^</button>
+  </div>
+
+  <div style="margin:1rem 0;">
+    <button type="button" id="scan">Scan 0000-9999</button>
+    <span id="scanStatus"></span>
+  </div>
+  <canvas id="summary" width="700" height="200" style="border:1px solid #ddd;"></canvas>
   <div id="examples" style="margin:1rem 0;">
     Try: <button class="ex">6311</button> <button class="ex">2846</button> <button class="ex">1234</button>
   </div>
