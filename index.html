@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+<div id="app" style="max-width:700px;margin:2rem auto;font:16px system-ui;">
+  <h1>Sydney Train Game (→ 10)</h1>
+  <p>Enter a 4-digit number:</p>
+  <form id="form">
+    <input id="digits" placeholder="e.g. 6311" maxlength="4" pattern="\d{4}" required />
+    <button>Solve</button>
+    <label style="margin-left:1rem;">
+      <input type="checkbox" id="all" checked /> show all solutions
+    </label>
+  </form>
+  <div id="examples" style="margin:1rem 0;">
+    Try: <button class="ex">6311</button> <button class="ex">2846</button> <button class="ex">1234</button>
+  </div>
+  <div id="out"></div>
+</div>
+<script type="module" src="/src/main.ts"></script>
