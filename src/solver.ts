@@ -57,9 +57,9 @@ export function solveToTen(digits: number[], target=10, ops: ReadonlyArray<Op> =
     return;
     }
   // combine any adjacent pair. enumerates all in-order parenthesisations.
-    for (let i = 0; i < nodes.length - 1; i++) {
+    for (let i = 0; i < nodes.length - 1; i++) { // tries every adjacent pair loop
       const a = nodes[i], b = nodes[i + 1]; // sliding window adjacent pair combine
-      for (const nxt of combine(a, b)) { // pushes allowable ops into Node[]
+      for (const nxt of combine(a, b)) { // pushes allowable ops into Node[]. checks ops loop
         const nextNodes = nodes.slice(0, i).concat(nxt, nodes.slice(i+2));
         rec(nextNodes);
       }

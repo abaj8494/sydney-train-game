@@ -2,41 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/sydney-train-game/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/sydney-train-game/t.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-    <script type="module" crossorigin src="/sydney-train-game/assets/index-CorQaURc.js"></script>
+    <title>Make 10</title>
+
+  <style>
+    .op {
+      padding: 0.35rem 0.7 rem;
+      border: 0;
+      color: #fff;
+      border-radius: 8px;
+      margin-right: .4rem;
+      cursor: pointer;
+      background: #dc2626; /* red = off */
+    }
+    .op.on { background: #16a34a; }
+  </style>
+    <script type="module" crossorigin src="/sydney-train-game/assets/index-Gso-ZGYV.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+      <div id="app" style="max-width:700px;margin:2rem auto;font:16px system-ui;">
+        <h1>Sydney Train Game (→ 10)</h1>
+        <p>Enter a 4-digit number:</p>
+
+        <form id="form">
+          <input id="digits" placeholder="e.g. 6311" maxlength="4" pattern="\d{4}" required />
+          <button>Solve</button>
+          <label style="margin-left:1rem;">
+            <input type="checkbox" id="all" checked /> show all solutions
+          </label>
+        </form>
+
+        <div id="ops" style="margin:0.5rem 0;">
+          <strong>Operations:</strong>
+          <button type="button" class="op on" data-op="+">+</button>
+          <button type="button" class="op on" data-op="-">-</button>
+          <button type="button" class="op on" data-op="*">*</button>
+          <button type="button" class="op on" data-op="/">/</button>
+          <button type="button" class="op" data-op="^">^</button>
+        </div>
+
+        <div style="margin:1rem 0;">
+          <button type="button" id="scan">Scan 0000-9999</button>
+          <span id="scanStatus"></span>
+        </div>
+        <canvas id="summary" width="700" height="200" style="border:1px solid #ddd;"></canvas>
+        <div id="examples" style="margin:1rem 0;">
+          Try: <button class="ex">6311</button> <button class="ex">2846</button> <button class="ex">1234</button>
+        </div>
+        <div id="out"></div>
+      </div>
+
   </body>
 </html>
-<div id="app" style="max-width:700px;margin:2rem auto;font:16px system-ui;">
-  <h1>Sydney Train Game (→ 10)</h1>
-  <p>Enter a 4-digit number:</p>
-  <form id="form">
-    <input id="digits" placeholder="e.g. 6311" maxlength="4" pattern="\d{4}" required />
-    <button>Solve</button>
-    <label style="margin-left:1rem;">
-      <input type="checkbox" id="all" checked /> show all solutions
-    </label>
-  </form>
-  <div id="ops" style="margin:0.5rem 0;">
-    <strong>Operations:</strong>
-    <button type="button" class="op on" data-op="+">+</button>
-    <button type="button" class="op on" data-op="-">-</button>
-    <button type="button" class="op on" data-op="*">*</button>
-    <button type="button" class="op on" data-op="/">/</button>
-    <button type="button" class="op" data-op="^">^</button>
-  </div>
-
-  <div style="margin:1rem 0;">
-    <button type="button" id="scan">Scan 0000-9999</button>
-    <span id="scanStatus"></span>
-  </div>
-  <canvas id="summary" width="700" height="200" style="border:1px solid #ddd;"></canvas>
-  <div id="examples" style="margin:1rem 0;">
-    Try: <button class="ex">6311</button> <button class="ex">2846</button> <button class="ex">1234</button>
-  </div>
-  <div id="out"></div>
-</div>

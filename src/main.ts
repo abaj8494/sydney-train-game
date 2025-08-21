@@ -27,6 +27,13 @@ setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
 
 import { solveToTen, type Op } from "./solver";
 
+const DEBUG = import.meta.env.VITE_DEBUG === 'true'  || import.meta.env.DEV === true;
+
+let traceMod: null | typeof import('./trace') = null;
+
+if (DEBUG) {
+  traceMod = await import('./trace');
+}
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 let selectedOps: Set <Op> = new Set(['+', '-', '*', '/']);
@@ -149,3 +156,17 @@ document.querySelectorAll('.ex').forEach((btn) =>
 );
 
 
+// unwritten trace code. rewrite; learn
+const traceBtn = document.getElementById('traceBtn') as HTMLButtonElement | null;
+traceBtn?.addEventListener('click', () => {
+  if (!DEBUG || !traceMod) return;
+  const s = (document.getElementById('digits') as HTMLInputElement).value.trim();
+  if (!/^\d{4}$/.test(s)) return;
+  const digits = s.split('').map(Number);
+  const ops = Array.from(selectedOps) as Op[]; // your existing state
+  const tree = traceMod.traceSolve(digits, ops, 10);
+  console.clear();
+  console.group(`Trace for ${digits.join('')}, ops=[${ops.join(' ')}]`);
+  traceMod.printTrace(tree, /*onlySolutions=*/false);
+  console.groupEnd();
+});
