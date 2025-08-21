@@ -143,6 +143,16 @@ form.addEventListener('submit', (e) => {
     const digits = parseDigits(digitsEl.value.trim());
     const exprs = solveToTen(digits, 10, currentOps());
     renderSolutions(exprs, allEl.checked);
+    
+    // Add trace output for single digit solving
+    if (DEBUG && traceMod) {
+      const ops = currentOps();
+      const tree = traceMod.traceSolve(digits, ops, 10);
+      console.clear();
+      console.group(`Trace for ${digits.join('')}, ops=[${ops.join(' ')}]`);
+      traceMod.printTrace(tree, /*onlySolutions=*/false);
+      console.groupEnd();
+    }
   } catch (err) {
     out.innerHTML = `<p style="color:#b00">${(err as Error).message}</p>`;
   }
@@ -156,17 +166,4 @@ document.querySelectorAll('.ex').forEach((btn) =>
 );
 
 
-// unwritten trace code. rewrite; learn
-const traceBtn = document.getElementById('traceBtn') as HTMLButtonElement | null;
-traceBtn?.addEventListener('click', () => {
-  if (!DEBUG || !traceMod) return;
-  const s = (document.getElementById('digits') as HTMLInputElement).value.trim();
-  if (!/^\d{4}$/.test(s)) return;
-  const digits = s.split('').map(Number);
-  const ops = Array.from(selectedOps) as Op[]; // your existing state
-  const tree = traceMod.traceSolve(digits, ops, 10);
-  console.clear();
-  console.group(`Trace for ${digits.join('')}, ops=[${ops.join(' ')}]`);
-  traceMod.printTrace(tree, /*onlySolutions=*/false);
-  console.groupEnd();
-});
+// Trace functionality is now integrated into the main solve button
